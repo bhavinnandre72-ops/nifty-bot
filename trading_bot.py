@@ -10,7 +10,7 @@ def send_telegram_message(message):
         return
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     payload = {
-        "chat_id": "@bhavinnandre72",  # किंवा तुमचा Chat ID
+        "chat_id": "1486399523",  # किंवा तुमचा Chat ID
         "text": message
     }
     try:
