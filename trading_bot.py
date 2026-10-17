@@ -49,7 +49,8 @@ def execute_real_time_paper_trading():
     
     for trade in trades:
         # १. ट्रेड घेतल्याची अचूक एन्ट्री वेळ (Entry Timestamp)
-        entry_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # भारतीय वेळ (IST) एन्ट्रीसाठी
+    entry_time = (datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d %I:%M:%S %p")
         
         entry_message = (
             f"🟢 [NIFTY LIVE ENTRY #{trade['num']}]\n"
@@ -69,9 +70,8 @@ def execute_real_time_paper_trading():
         time.sleep(8)
         
         # २. ट्रेड संपल्याची (टार्गेट किंवा स्टॉपलॉस हिट) एक्झिट वेळ (Exit Timestamp)
-        exit_time = datetime.datetime.now(# भारतीय वेळ (IST) मिळवण्यासाठी UTC मध्ये ५ तास ३० मिनिटे जोडणे
-ist_time = datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)
-current_time = ist_time.strftime("%Y-%m-%d %I:%M:%S %p")
+            # भारतीय वेळ (IST) मिळवण्यासाठी अचूक टायमिंग
+    exit_time = (datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d %I:%M:%S %p")
         
         # येथे आपण टार्गेट हिट झाल्याचे गृहीत धरत आहोत (तुम्ही हवे असल्यास लॉजिक बदलू शकता)
         exit_message = (
